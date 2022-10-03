@@ -1,25 +1,35 @@
 {
-  "name": "@tempestive/apiclient",
-  "private": false,
-  "version": "0.0.0",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/api-client.umd.cjs",
-  "module": "./dist/api-client.js",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.186",
-    "path": "^0.12.7",
-    "typescript": "^4.6.4",
-    "vite": "^3.1.0"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
-  }
+    "name": "@tempestive/apiclient",
+    "private": false,
+    "version": "0.0.2",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "source": "lib/main.ts",
+    "unpkg": "./dist/api-client.umd.js",
+    "types": "./dist/types/main.d.ts",
+    "main": "./dist/api-client.umd.cjs",
+    "module": "./dist/api-client.js",
+    "exports": {
+        ".": {
+            "import": "./dist/api-client.js",
+            "require": "./dist/api-client.umd.cjs"
+        }
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build && tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
+        "preview": "vite preview",
+        "publish": "npm publish --access public"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.14.186",
+        "path": "^0.12.7",
+        "typescript": "^4.6.4",
+        "vite": "^3.1.0"
+    },
+    "dependencies": {
+        "lodash": "^4.17.21"
+    }
 }
