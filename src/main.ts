@@ -1,9 +1,10 @@
-import { x } from '../lib/main'
+import { ApiClient } from '../lib/main'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <p class="read-the-docs">
-      ${x}
-    </p>
-  </div>
-`
+
+
+const TestClient = new ApiClient(
+    "https://jsonplaceholder.typicode.com"
+);
+
+
+TestClient.get('/todos/1').then(console.log)
