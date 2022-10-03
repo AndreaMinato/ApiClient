@@ -3,7 +3,9 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/api-client.umd.cjs",
   "module": "./dist/api-client.js",
   "scripts": {
@@ -12,8 +14,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.186",
     "path": "^0.12.7",
     "typescript": "^4.6.4",
     "vite": "^3.1.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
