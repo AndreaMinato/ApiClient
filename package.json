@@ -1,8 +1,11 @@
 {
   "name": "@tempestive/apiclient",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/api-client.umd.cjs",
+  "module": "./dist/api-client.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
