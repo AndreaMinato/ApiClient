@@ -1,4 +1,4 @@
-import merge from "lodash/merge";
+import { merge } from "lodash";
 interface ApiClientOptions {
   mock?: unknown;
   guest?: boolean;
@@ -109,10 +109,18 @@ export class ApiClient {
         );
 
       let result: T;
-      if (requestOptions.responseType === "blob") {
-        result = (await response.blob()) as unknown as T;
+      if (response.status !== 204) {
+        if (requestOptions.responseType === "blob") {
+          result = (await response.blob()) as unknown as T;
+        } else {
+          try {
+            result = await response.json();
+          } catch {
+            result = null as unknown as T;
+          }
+        }
       } else {
-        result = await response.json();
+        result = null as unknown as T;
       }
       this._afterRequest(options, requestOptions, response);
 
