@@ -9,12 +9,14 @@ export interface ApiClientResponse<T> extends Response {
   data: T;
 }
 
-class ApiClientError extends Error {
+export class ApiClientError extends Error {
   response: Response;
+  responseData: unknown;
 
-  constructor(message: string, response: Response) {
+  constructor(message: string, response: Response, data: unknown) {
     super(message);
     this.response = response;
+    this.responseData = data;
   }
 }
 
@@ -102,11 +104,14 @@ export class ApiClient {
     let response: Response = new Response();
     try {
       response = await fetch(`${this._baseUrl}${url}`, options);
-      if (!response.ok)
+      if (!response.ok) {
+        const data = await response.json();
         throw new ApiClientError(
           `Response finished with status ${response.status} - ${response.statusText}`,
-          response
+          response,
+          data
         );
+      }
 
       let result: T;
       if (response.status !== 204) {
