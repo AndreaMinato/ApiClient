@@ -1,7 +1,7 @@
 {
     "name": "@tempestive/apiclient",
     "private": false,
-    "version": "0.0.10",
+    "version": "0.0.11",
     "license": "MIT",
     "main": "dist/tempestive-apiclient.cjs.js",
     "module": "dist/tempestive-apiclient.esm.js",
