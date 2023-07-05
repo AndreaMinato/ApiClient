@@ -1,5 +1,5 @@
-import { ApiClient } from "./ApiClient";
+import { ApiClient, ApiClientError } from "./ApiClient";
 import type { ApiClientResponse, } from "./ApiClient";
 
 
-export { ApiClient, ApiClientResponse }
+export { ApiClient, ApiClientResponse, ApiClientError }
